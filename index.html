@@ -4,14 +4,17 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
    </head>
-
-   <body>
+      
+   <body style="background-color: steelblue;">
+      <div id="page" style = "height:800px;width:600px;background-color:white;">
+      </div>
       <div id="horline" style = "height:50px;width:300px;background-color:coral;">
       </div>
       <div id="verline" style = "height:300px;width:50px;background-color:turquoise;">
       </div>
-
+  
       <script>
+         $("#page").resizable().draggable(); 
          $("#horline").resizable().draggable(); 
          $("#verline").resizable().draggable();
       </script>
