@@ -8,7 +8,7 @@
            .page {
                border: 3px dashed transparent;
                background: #ddd;
-               top: 8%;
+               top: 4%;
                left: 30%;
                height: 800px;
                width: 650px;
@@ -45,9 +45,30 @@
             }
         </style>
 
+        <script>
+            function draw() {
+               var canvas = document.getElementById( 'canvas' );
+               if( canvas.getContext ) 
+               {
+                  var context = canvas.getContext("2d");
+                  context.beginPath();
+                  for( n = 10; n < 2100; n += 35 )
+                  {
+                     context.moveTo( n,  0 );
+                     context.lineTo( n, 25);
+                     context.moveTo( n + 17, 0 );
+                     context.lineTo( n + 17, 15 );
+                  }   
+                  context.lineWidth = 0.5;
+                  context.strokeStyle = 'white';
+                  context.stroke();
+               }      
+            }  
+        </script>
    </head>
       
-   <body style="background-color: steelblue;">
+   <body style="background-color: steelblue;" onload="draw();">
+      <canvas id="canvas" width="2200" height="40" style="margin-top:-7px;"></canvas> 
       <div id="page" class="page">
       </div>
       <div id="toolbox" class="toolbox">
