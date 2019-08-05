@@ -3,20 +3,71 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+
+        <style>
+           .page {
+               border: 3px dashed transparent;
+               background: #ddd;
+               top: 8%;
+               left: 30%;
+               height: 800px;
+               width: 650px;
+               box-shadow: 10px 10px 10px darkslategrey;
+            }
+
+            .page.hovering {
+               background: #b6d6fb;
+               border-color: #276cbc;
+            }
+
+            .toolbox {
+               position: absolute;
+               top: 88px;
+               left: 200 px;
+               width: 380px;
+               height: 400px;
+               background:coral;
+               margin-left:100px;
+               box-shadow: 10px 10px 10px darkslategrey;               
+            }
+
+            .item {
+               position: absolute;
+               top: 150px;
+               left: 150 px;
+               width: 100px;
+               height: 20px;
+               background:yellowgreen;
+               margin-left:150px;
+               box-shadow: 5px 5px 5px darkslategray;
+               padding:10px;               
+            }
+        </style>
+
    </head>
       
    <body style="background-color: steelblue;">
-      <div id="page" style = "height:800px;width:600px;background-color:white;">
+      <div id="page" class="page">
       </div>
-      <div id="horline" style = "height:50px;width:300px;background-color:coral;">
+      <div id="toolbox" class="toolbox">
       </div>
-      <div id="verline" style = "height:300px;width:50px;background-color:turquoise;">
+      <div id="item" class="item">
+         item
       </div>
   
       <script>
-         $("#page").resizable().draggable(); 
-         $("#horline").resizable().draggable(); 
-         $("#verline").resizable().draggable();
+         $( document ).mousemove( function( event ) {
+             $( "#page" ).text( "x: " + event.pageX + ", y: " + event.pageY );
+          });
+         $( "#page" ).resizable().draggable().droppable( { hoverClass: 'hovering' } ); 
+         $( "#toolbox" ).resizable().draggable({ 
+             start : function(e){ $(this).css({'pointer-events': 'none'});}, 
+             stop: function(e){ $(this).css({'pointer-events': 'all'});}
+         }); 
+         $( "#item" ).resizable().draggable({ 
+             start : function(e){ $(this).css({'pointer-events': 'none'});}, 
+             stop: function(e){ $(this).css({'pointer-events': 'all'});}
+         }); 
       </script>
    </body>
 </html>
